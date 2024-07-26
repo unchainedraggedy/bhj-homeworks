@@ -8,24 +8,23 @@ const changeTimer = () => {
 setInterval(changeTimer, 1000)
 */
 
-let seconds = +timer.textContent
+let sec = +timer.textContent
 
 const changeTimer = () => {
-    if (seconds > 0) {
-        seconds -= 1;
+    if(sec > 0){
+        sec -= 1;
     }
 
-    let hours = Math.floor(seconds / 3600);
-    let minutes = Math.floor((seconds % 3600) / 60);
-    let leftSec = seconds % 60;
+    let hours = Math.floor(sec/3600);
+    let minutes = Math.floor((sec%3600)/60);
+    let leftSec =  Math.floor(sec%60);
 
-    let hoursToHours = (hours < 10 ? '0' : '') + hours;
-    let minutesToMinutes = (minutes < 10 ? '0' : '') + minutes;
-    let secToSec = (leftSec < 10 ? '0' : '') + leftSec;
+    function toTwo(num){
+        return num < 10 ? '0' + num : '' + num;
+    }
+    let formattedHours = toTwo(hours) + ':' + toTwo(minutes) + ':' + toTwo(leftSec);
 
-    const formattedTime = hoursToHours + ':' + minutesToMinutes + ':' + secToSec;
-
-    timer.textContent = formattedTime;
+    timer.textContent = formattedHours;
 }
 
 setInterval(changeTimer, 1000);
