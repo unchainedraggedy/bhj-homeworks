@@ -33,7 +33,7 @@ function startGame(){
     setTimeout(() => {
       deactivateHole(activeHole);
       activeHole = Math.floor(1 + Math.random() * 9);
-      activeHole(activeHole);
+      activateHole(activeHole);
       next();
     }, 800);
   }

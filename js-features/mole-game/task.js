@@ -22,7 +22,7 @@ const clicker = mole => {
     }
 }
 
-for(let i = 1; i < 9; i++){
+for(let i = 1; i <= 9; i++){
     getHole(i).addEventListener('click', clicker);
 }
 
