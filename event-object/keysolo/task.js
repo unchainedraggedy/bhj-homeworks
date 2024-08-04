@@ -17,6 +17,20 @@ class Game {
   }
 
   registerEvents() {
+    document.addEventListener('keydown', (event) => {
+      if(this.currentSymbol){
+        const key = event.key.toLowerCase();
+        const symbol = this.currentSymbol.textContent.toLowerCase();
+
+        if(key === symbol){
+          this.success()
+        } else {
+          this.fail();
+        }
+      }
+
+    })
+  
     /*
       TODO:
       Написать обработчик события, который откликается
@@ -70,7 +84,8 @@ class Game {
         'popcorn',
         'cinema',
         'love',
-        'javascript'
+        'javascript',
+        'figuring out'
       ],
       index = Math.floor(Math.random() * words.length);
 
