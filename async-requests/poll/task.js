@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const pollTitle = document.getElementById('poll__title');
+   
+   const pollTitle = document.getElementById('poll__title');
     const pollAnswers = document.getElementById('poll__answers');
   
     const xhr = new XMLHttpRequest();
@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
               statEl.textContent = `${stat.answer}: ${stat.votes} голосов`;
               pollAnswers.appendChild(statEl);
             });
+            console.log(result)
           };
           xhrPost.send(`vote=${poll.id}&answer=${index}`);
         });
@@ -34,5 +35,5 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     };
     xhr.send();
-  });
+
   
