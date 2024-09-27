@@ -42,6 +42,18 @@
 }
 
 .welcome_active {
-  display: block;
+  display: flex;
+  flex-direction: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.logout {
+  flex-basis: 100%;
   text-align: center;
 }
+
+.logout__btn {
+  display: block;
+}
+
