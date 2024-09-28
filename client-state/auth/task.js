@@ -1,7 +1,5 @@
 const signin = document.getElementById('signin');
 const form = document.getElementById('signin__form');
-const loginForm = form.login;
-const passwordForm = form.password;
 
 const welcome = document.getElementById('welcome');
 const userIdSpan = document.getElementById('user_id');
@@ -21,24 +19,23 @@ form.addEventListener('submit', (event) => {
     xhrPost.onload = () => {
         const response = JSON.parse(xhrPost.response);
 
-        if(response.success){
+        if (response.success) {
             localStorage.setItem('user_id', response.user_id);
             signin.classList.remove('signin_active');
             welcome.classList.add('welcome_active');
             userIdSpan.innerText = response.user_id;
+
+            form.reset();
         } else {
             alert('Неверный логин и/или пароль');
         }
     };
-
-    loginForm.value = '';
-    passwordForm.value = '';
 });
 
 logoutBtn.addEventListener('click', () => {
     localStorage.removeItem('user_id');  
     signin.classList.add('signin_active');
     welcome.classList.remove('welcome_active');
-    loginForm.value = '';
-    passwordForm.value = '';
+
+    form.reset();
 });
