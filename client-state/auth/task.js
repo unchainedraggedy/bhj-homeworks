@@ -7,7 +7,7 @@ const welcome = document.getElementById('welcome');
 const userIdSpan = document.getElementById('user_id');
 
 const logout = document.getElementById('logout');
-const logoutBtn = document.getElementById('logout__btn')
+const logoutBtn = document.getElementById('logout__btn');
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -27,18 +27,18 @@ form.addEventListener('submit', (event) => {
             welcome.classList.add('welcome_active');
             userIdSpan.innerText = response.user_id;
         } else {
-            alert('Неверный логин и/или пароль')
+            alert('Неверный логин и/или пароль');
         }
-    }
+    };
+
     loginForm.value = '';
     passwordForm.value = '';
-})
+});
 
 logoutBtn.addEventListener('click', () => {
+    localStorage.removeItem('user_id');  
     signin.classList.add('signin_active');
     welcome.classList.remove('welcome_active');
     loginForm.value = '';
     passwordForm.value = '';
-})
-  
-  
+});
