@@ -1,3 +1,13 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const savedUserId = localStorage.getItem('user_id');
+
+    if (savedUserId) {
+        signin.classList.remove('signin_active');
+        welcome.classList.add('welcome_active');
+        userIdSpan.innerText = savedUserId;
+    }
+});
+
 const signin = document.getElementById('signin');
 const form = document.getElementById('signin__form');
 
@@ -15,10 +25,10 @@ form.addEventListener('submit', (event) => {
 
     xhrPost.open('POST', form.action);
     xhrPost.send(formData);
+    xhrPost.responseType = 'json'
 
     xhrPost.onload = () => {
-        const response = JSON.parse(xhrPost.response);
-
+        const response = xhrPost.response;
         if (response.success) {
             localStorage.setItem('user_id', response.user_id);
             signin.classList.remove('signin_active');
